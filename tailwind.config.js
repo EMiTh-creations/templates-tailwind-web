@@ -1,17 +1,11 @@
 module.exports = {
-  prefix: 'tw-',
-  purge: {
-    // layers: ['utilities'], // this flag will revert the purge mode to pre 1.8 changes
-    content: ["src/**/*.{php,html}"],
-    enabled: false,
-  },
+  purge: [],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
-  variants: {},
-  plugins: [],
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
+  variants: {
+    extend: {},
   },
-};
+  plugins: [],
+}
