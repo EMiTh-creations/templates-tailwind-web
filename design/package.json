@@ -1,6 +1,6 @@
 {
-  "name": "tailwind-template-min",
-  "version": "1.0.0",
+  "name": "web-template-min",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -23,11 +23,10 @@
     "gulp-load-plugins": "^2.0.5",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.1.0",
-    "gulp-terser": "^2.0.0",
+    "gulp-terser": "^1.4.1",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.1",
     "postcss-uncss": "^0.17.0",
-    "tailwindcss": "^2.0.1",
     "uncss": "^0.17.3"
   },
   "browserslist": [
@@ -35,8 +34,5 @@
     "ie >= 9",
     "android >= 4.4",
     "ios >= 7"
-  ],
-  "dependencies": {
-    "postcss": "^8.1.7"
-  }
+  ]
 }
