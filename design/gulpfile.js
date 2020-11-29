@@ -6,6 +6,7 @@ var cssnano = require("cssnano");
 var cssmqpacker = require("css-mqpacker");
 var pngquant = require("imagemin-pngquant");
 var mozjpeg = require("imagemin-mozjpeg");
+var tailwindcss = require("tailwindcss");
 var browserSync = require("browser-sync").create();
 
 // define source and destination paths
@@ -13,6 +14,10 @@ var paths = {
     styles: {
         src: "./src/scss/**/*.scss",
         dest: "./dist/css",
+        tailwind: {
+            src: "./src/tailwind/**/*.css",
+            dest: "./dist/css",
+        },
     },
     scripts: {
         src: "./src/js/**/*.js",
@@ -50,6 +55,18 @@ function styles() {
         .pipe(plugins.sass())
         .pipe(plugins.postcss(postcssProcessors))
         .pipe(gulp.dest(paths.styles.dest))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+}
+
+// Styles Processing function. Check for changes, process SASS
+// minify, group media queries and remove unused selectors
+function styles_tailwind() {
+    return gulp
+        .src(paths.styles.tailwind.src)
+        .pipe(plugins.postcss([tailwindcss(), autoprefixer(), cssnano()]))
+        .pipe(gulp.dest(paths.styles.tailwind.dest))
         .pipe(browserSync.reload({
             stream: true
         }));
@@ -116,15 +133,24 @@ function browser() {
 function watch() {
     gulp.watch(paths.scripts.src, scripts);
     gulp.watch(paths.styles.src, styles);
+    gulp.watch(
+        [paths.styles.tailwind.src, "./tailwind.config.js"],
+        styles_tailwind
+    );
     gulp.watch(paths.images.src, images);
     gulp.watch(paths.static.src, static);
 }
 
 //define build process, whether tasks run in parallel or series.
-var build = gulp.series(clean, static, gulp.parallel(styles, scripts, images));
+var build = gulp.series(
+    clean,
+    static,
+    gulp.parallel(styles, styles_tailwind, scripts, images)
+);
 
 //define standalone tasks
 gulp.task("styles", styles);
+gulp.task("styles_tailwind", styles_tailwind);
 gulp.task("clean", clean);
 gulp.task("scripts", scripts);
 gulp.task("images", images);
