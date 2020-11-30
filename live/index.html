@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+    <!-- This is the start of the navbar -->
+    <nav class="navbar">
+        <div class="navbar__nav container">
+            <div class="navbar__mobile">
+                <div class="navbar__brand">random website</div>
+
+                <div class="navbar__hamburger">
+                    <i class="fas fa-bars"></i>=
+                </div>
+            </div>
+
+            <ul class="navbar__items">
+                <li class="navbar__item active"><a class="navbar__link" href="#">Home</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">About</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">Services</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">Contact</a></li>
+                <li class="navbar__item navbar__item--has-dropdown">
+                    <a class="navbar__link navbar__link--dropdown" tabindex="0">Example drop-down</a>
+                    <ul class="navbar__dropdown">
+                        <li class="navbar__item navbar__item--sub"><a class="navbar__link" href="#">1</a></li>
+                        <li class="navbar__item navbar__item--sub"><a class="navbar__link" href="#">2</a></li>
+                        <li class="navbar__item navbar__item--sub"><a class="navbar__link" href="#">3</a></li>
+                        <li class="navbar__item navbar__item--sub"><a class="navbar__link" href="#">4</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content goes here -->
+
+    <!-- https://github.com/alpinejs/alpine/ -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+
+    <!-- Internal scripts -->
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

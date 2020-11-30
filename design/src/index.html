@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <!-- Font awesome -->
+    <!-- https://fontawesome.bootstrapcheatsheets.com/ -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="/css/tailwind.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+    <!-- This is the start of the navbar -->
+    <nav class="navbar" x-data="{ menu_visible: false }" @click.away="menu_visible = false">
+        <div class=" navbar__nav container">
+            <div class="navbar__mobile">
+                <div class="navbar__brand"><a href="#">random website</a></div>
+
+                <div class="navbar__hamburger" @click="menu_visible = !menu_visible">
+                    <i class="fa" :class="{ 'fa-bars': !menu_visible, 'fa-times' : menu_visible }"></i>
+                </div>
+            </div>
+
+            <ul class="navbar__items" :class="{ 'active' : menu_visible }">
+                <li class="navbar__item"><a class="navbar__link" href="#">Home</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">About</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">Services</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">Contact</a></li>
+                <li class="navbar__item navbar__item--has-dropdown" x-data="{ open: false }">
+                    <a class=" navbar__link navbar__link--dropdown" tabindex="0" @click="open = !open" @click.away="open = false"
+                        :class="{ 'active': open }">Example drop-down</a>
+                    <ul class="navbar__dropdown" x-show.transition.scale="open">
+                        <li class="navbar__item"><a class="navbar__link" href="#">1</a></li>
+                        <li class="navbar__item"><a class="navbar__link" href="#">2</a></li>
+                        <li class="navbar__item"><a class="navbar__link" href="#">3</a></li>
+                        <li class="navbar__item"><a class="navbar__link" href="#">4</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- This is the end of the navbar -->
+
+    <!-- Content goes here -->
+    <div class="text-lg">Hello</div>
+
+    <!-- https://github.com/alpinejs/alpine/ -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+
+    <!-- Internal scripts -->
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
